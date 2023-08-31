@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  nodedocker:
+    restart: "on-failure"
+    build:
+      context: ./Nodejs
+      dockerfile: Dockerfile
+    container_name: nodedocker
+    ports:
+      - "8080:8080" 
+    networks:
+      - pi_taller3
+  
+  reactdocker:
+    restart: "on-failure"
+    build:
+      context: ./Reactdocker
+      dockerfile: Dockerfile
+    container_name: reactdocker
+    ports:
+      - "9000:80" 
+    networks:
+      - pi_taller3
+
+networks:
+  pi_taller3:

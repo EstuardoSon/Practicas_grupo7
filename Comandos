@@ -1,0 +1,2 @@
+docker build -t "nombre_imagen" .
+docker run -p 9000:3001 --name "nombre_imagen" -i -t "nombre_contenedor"
