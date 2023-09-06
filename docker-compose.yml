@@ -1,11 +1,26 @@
 version: "3.9"
 services:
+  dbdocker:
+    build:
+      context: ./DB
+      dockerfile: Dockerfile
+    container_name: dbdocker
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Es2009000458'
+      MYSQL_USER: 'iniciales'
+      MYSQL_PASSWORD: 'Es2009000458'
+    networks:
+      - pi_taller3
+    ports:
+      - "3307:3306"
+
   nodedocker:
     restart: "on-failure"
     build:
       context: ./Nodejs
       dockerfile: Dockerfile
     container_name: nodedocker
+    env_file: ./Nodejs/.env
     ports:
       - "8080:8080" 
     networks:
